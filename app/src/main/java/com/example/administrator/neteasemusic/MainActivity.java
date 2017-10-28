@@ -12,5 +12,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //TODO
         Toast.makeText(this,"nihao",Toast.LENGTH_LONG).show();
+        //
     }
 }
