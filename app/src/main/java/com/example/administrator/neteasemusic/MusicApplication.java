@@ -13,9 +13,6 @@ public class MusicApplication extends Application {
         return ourInstance;
     }
 
-    private MusicApplication() {
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
