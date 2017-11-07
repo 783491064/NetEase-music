@@ -2,9 +2,17 @@ package com.example.administrator.neteasemusic.ui.guide;
 
 import android.net.Uri;
 import android.os.Bundle;
+<<<<<<< HEAD
 
 import com.example.administrator.neteasemusic.R;
 import com.example.administrator.neteasemusic.ui.widget.PlayVideoView;
+=======
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.example.administrator.neteasemusic.R;
+>>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
 
 
 /**

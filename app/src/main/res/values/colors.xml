@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
     <color name="colorPrimary">#a21609</color>
     <color name="colorPrimaryDark">#6c090b</color>
     <color name="colorPrimaryWhite">#00000000</color>
@@ -367,4 +368,9 @@
     <color name="red_dark">#C62828</color>
     <color name="red_trans">#99F44336</color>
     <color name="test_color">#696969</color>
+=======
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+>>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
 </resources>

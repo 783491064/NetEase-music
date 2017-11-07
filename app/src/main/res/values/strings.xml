@@ -1,4 +1,5 @@
 <resources>
+<<<<<<< HEAD
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="app_name">CainiaoMusic</string>
@@ -199,4 +200,10 @@
     <string name="about_name2">作者</string>
     <string name="about_author">小K哥</string>
     <string name="about_me">关注我的公众号:我爱小k哥    里面有视频中提到的免费基础学习视频,同时也会不定期提供最前沿的android资讯</string>
+=======
+    <string name="app_name">NetEaseMusic</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+>>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
 </resources>

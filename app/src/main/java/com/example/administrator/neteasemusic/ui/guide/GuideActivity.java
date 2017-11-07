@@ -11,14 +11,21 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.example.administrator.neteasemusic.R;
+<<<<<<< HEAD
 import com.example.administrator.neteasemusic.ui.BaseActivity;
 import com.example.administrator.neteasemusic.ui.cnmusic.MainActivity;
+=======
+import com.example.administrator.neteasemusic.ui.music.BaseActivity;
+>>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
 
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+<<<<<<< HEAD
 import butterknife.OnClick;
+=======
+>>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
 
 public class GuideActivity extends BaseActivity {
     @InjectView(R.id.viewpager)
@@ -45,10 +52,21 @@ public class GuideActivity extends BaseActivity {
     }
 
     /**
+<<<<<<< HEAD
      * 播放的三个界面；
      */
     private void initData() {
         fragments = new ArrayList<>();
+=======
+     * 加载数据
+     */
+    private void initData() {
+        fragments = new ArrayList<>();
+
+        /**
+         * 播放的三个界面；
+         */
+>>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
         GuidFragment guidFragment1 = new GuidFragment();
         Bundle bundle1 = new Bundle();
         bundle1.putInt("Index", 1);
@@ -57,14 +75,24 @@ public class GuideActivity extends BaseActivity {
 
         GuidFragment guidFragment2 = new GuidFragment();
         Bundle bundle2 = new Bundle();
+<<<<<<< HEAD
         bundle2.putInt("Index", 2);
         guidFragment2.setArguments(bundle2);
+=======
+        bundle1.putInt("Index", 2);
+        guidFragment1.setArguments(bundle2);
+>>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
         fragments.add(guidFragment2);
 
         GuidFragment guidFragment3 = new GuidFragment();
         Bundle bundle3 = new Bundle();
+<<<<<<< HEAD
         bundle3.putInt("Index", 3);
         guidFragment3.setArguments(bundle3);
+=======
+        bundle1.putInt("Index", 3);
+        guidFragment1.setArguments(bundle3);
+>>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
         fragments.add(guidFragment3);
         initViewPager();
 
@@ -99,6 +127,10 @@ public class GuideActivity extends BaseActivity {
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
         }
 
         @Override
@@ -125,6 +157,7 @@ public class GuideActivity extends BaseActivity {
         }
     }
 
+<<<<<<< HEAD
     /**
      * 点击进入主页面；
      */
@@ -134,5 +167,7 @@ public class GuideActivity extends BaseActivity {
         finish();
     }
 
+=======
+>>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
 
 }

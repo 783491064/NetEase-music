@@ -1,5 +1,6 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+<<<<<<< HEAD
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
@@ -44,4 +45,8 @@
     <!-- 主界面 -->
     <dimen name="drawer_avatar_size">72dp</dimen>
     <dimen name="drawer_header_height">128dp</dimen>
+=======
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+>>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
 </resources>
