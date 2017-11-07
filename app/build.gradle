@@ -1,20 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-<<<<<<< HEAD
     compileSdkVersion 22
-=======
-    compileSdkVersion 24
->>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.example.administrator.neteasemusic"
         minSdkVersion 15
-<<<<<<< HEAD
         targetSdkVersion 22
-=======
-        targetSdkVersion 24
->>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -29,21 +21,10 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-<<<<<<< HEAD
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:22.2.1'
     compile 'com.android.support:support-v4:22.2.1'
     androidTestCompile 'com.android.support:support-annotations:22.2.1'
-=======
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
-    compile 'com.android.support:design:24.2.1'
-    compile 'com.android.support:support-v4:24.2.1'
-    testCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
-    androidTestCompile 'com.android.support.test:runner:0.5'
-    androidTestCompile 'com.android.support:support-annotations:24.2.1'
->>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
     compile 'com.jakewharton:butterknife:5.1.1'
 }
