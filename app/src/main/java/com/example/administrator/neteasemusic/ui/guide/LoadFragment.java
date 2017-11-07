@@ -33,26 +33,13 @@ public abstract class LoadFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(setContentView(), container, false);
         isInitView = true;
-<<<<<<< HEAD
         isCanLoadDate();
         return view;
     }
 
     /**
      * 懒加载数据   思想就是 当界面可见后再去加载改片段的数据
-=======
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        isCanLoadDate();
-    }
-
-    /**
      * 可以加载数据了
->>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
      */
     protected void isCanLoadDate() {
         if (!isInitView) {

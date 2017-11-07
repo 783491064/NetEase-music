@@ -9,27 +9,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
         <activity android:name=".ui.WelcomeActivity"
             android:theme="@style/AppTheme.Full">
-=======
-        <activity android:name=".ui.play.WelcomeActivity">
->>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity android:name=".ui.cnmusic.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ui.guide.GuideActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-=======
-        <activity android:name=".ui.music.MainActivity" />
-        <activity android:name=".ui.guide.GuideActivity" />
->>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
     </application>
 
 </manifest>

@@ -7,7 +7,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-<<<<<<< HEAD
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -15,8 +14,5 @@
     <style name="AppTheme.Full" parent="AppTheme.NoActionBar">
         <item name="android:windowFullscreen">true</item>
     </style>
-
-=======
->>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
 
 </resources>

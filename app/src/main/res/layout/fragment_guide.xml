@@ -2,15 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<<<<<<< HEAD
      <com.example.administrator.neteasemusic.ui.widget.PlayVideoView
          android:layout_width="match_parent"
          android:layout_height="match_parent"
          android:id="@+id/play_video"/>
-=======
-      <com.example.administrator.neteasemusic.ui.guide.PlayVideoView
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:id="@+id/play_video"/>
->>>>>>> c382e1adf0862929f429b94813d3c8d9cc838ce6
 </FrameLayout>

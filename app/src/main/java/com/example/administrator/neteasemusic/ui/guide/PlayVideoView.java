@@ -7,10 +7,7 @@ import android.util.AttributeSet;
 import android.widget.VideoView;
 
 /**
- * Created by bijingcun
- * on 2017/11/5
- *
- * 自定义播放控件
+ * Created by bjc on 2017/11/7.
  */
 
 public class PlayVideoView extends VideoView {
