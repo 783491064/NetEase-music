@@ -6,6 +6,7 @@
     <dimen name="horizontal_padding">16dp</dimen>
     <dimen name="vertical_padding">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="drawer_icon_size">32dp</dimen>
 
     <!-- 页面统一间距 -->
     <dimen name="edittext_height">56dp</dimen>
