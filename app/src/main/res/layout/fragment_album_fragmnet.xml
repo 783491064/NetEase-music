@@ -6,7 +6,7 @@
 
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
-        android:layout_height="39dp"
+        android:layout_height="40dp"
         android:id="@+id/tab_layout"
         android:tag="tab_indicator_accent_color,bg_primary_color"/>
     <android.support.v4.view.ViewPager
@@ -14,5 +14,9 @@
         android:layout_below="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="end|bottom"
+        android:id="@+id/fl_bottom_play"/>
 </RelativeLayout>

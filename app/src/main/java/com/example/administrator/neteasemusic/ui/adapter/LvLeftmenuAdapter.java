@@ -16,8 +16,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by bjc on 2017/11/7.
- * 侧滑菜单的listview 的适配器
+ * 作者：bjc on 2017/11/22 12:30
+ * 邮箱：783491064@qq.com
+ * QQ ：783491064
+ * 类描述：侧滑菜单的listview 的适配器
  */
 
 public class LvLeftmenuAdapter extends BaseAdapter {
@@ -72,15 +74,15 @@ public class LvLeftmenuAdapter extends BaseAdapter {
                 }
                 break;
             case LvLeftItem.TYPE_NO_ICON:
-                if(convertView==null){
-                    convertView=inflater.inflate(R.layout.design_drawer_item_subheader,parent,false);
+                if (convertView == null) {
+                    convertView = inflater.inflate(R.layout.design_drawer_item_subheader, parent, false);
                 }
                 TextView subHeader = (TextView) convertView;
                 subHeader.setText(lvLeftItem.mName);
                 break;
             case LvLeftItem.TYPE_SEPARATOR:
-                if(convertView==null){
-                    convertView=inflater.inflate(R.layout.design_drawer_item_separator,parent,false);
+                if (convertView == null) {
+                    convertView = inflater.inflate(R.layout.design_drawer_item_separator, parent, false);
                 }
                 break;
         }

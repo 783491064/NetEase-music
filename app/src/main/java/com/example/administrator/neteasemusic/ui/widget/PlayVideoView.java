@@ -7,7 +7,10 @@ import android.util.AttributeSet;
 import android.widget.VideoView;
 
 /**
- * Created by bjc on 2017/11/6.
+ * 作者：bjc on 2017/11/22 12:30
+ * 邮箱：783491064@qq.com
+ * QQ ：783491064
+ * 类描述：引导页播放视频 封装的VideoView;
  */
 
 public class PlayVideoView extends VideoView {
@@ -22,13 +25,15 @@ public class PlayVideoView extends VideoView {
     public PlayVideoView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.getSize(heightMeasureSpec));
     }
-    public void palyVideo(Uri uri){
-        if(uri==null){
+
+    public void palyVideo(Uri uri) {
+        if (uri == null) {
             throw new IllegalArgumentException("uri cannot be null");
         }
         setVideoURI(uri);

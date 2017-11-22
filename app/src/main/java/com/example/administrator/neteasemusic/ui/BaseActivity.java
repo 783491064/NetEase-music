@@ -11,8 +11,10 @@ import com.example.administrator.neteasemusic.R;
 import butterknife.ButterKnife;
 
 /**
- * Created by bijingcun
- * on 2017/10/29.
+ * 作者：bjc on 2017/11/22 12:30
+ * 邮箱：783491064@qq.com
+ * QQ ：783491064
+ * 类描述：activity基类
  */
 
 public class BaseActivity extends AppCompatActivity {
@@ -30,7 +32,7 @@ public class BaseActivity extends AppCompatActivity {
      */
     protected void startActivity(Class activity) {
         Intent intent = new Intent();
-        intent.setClass(this,activity);
+        intent.setClass(this, activity);
         startActivity(intent);
     }
 }

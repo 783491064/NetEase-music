@@ -23,6 +23,8 @@ import com.example.administrator.neteasemusic.R;
 import com.example.administrator.neteasemusic.ui.BaseActivity;
 import com.example.administrator.neteasemusic.ui.adapter.LvLeftmenuAdapter;
 import com.example.administrator.neteasemusic.ui.alum.AlbumFragmnet;
+import com.example.administrator.neteasemusic.ui.friends.FriendsFragment;
+import com.example.administrator.neteasemusic.ui.local.LocalFragment;
 import com.example.administrator.neteasemusic.ui.widget.CustomViewPager;
 
 import java.util.ArrayList;
@@ -32,14 +34,14 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity {
+/**
+ * 作者：bjc on 2017/11/22 12:30
+ * 邮箱：783491064@qq.com
+ * QQ ：783491064
+ * 类描述：主界面；
+ */
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-    @InjectView(R.id.bar_net)
-    ImageView barNet;
-    @InjectView(R.id.bar_music)
-    ImageView barMusic;
-    @InjectView(R.id.bar_friends)
-    ImageView barFriends;
     @InjectView(R.id.bar_search)
     ImageView barSearch;
     @InjectView(R.id.toolbar)
@@ -53,6 +55,9 @@ public class MainActivity extends BaseActivity {
     private ActionBar ab;
     private ArrayList<ImageView> tabs = new ArrayList<>();
     private long time;
+    private ImageView barnet;
+    private ImageView barmusic;
+    private ImageView barfriends;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,9 +65,19 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
         getWindow().setBackgroundDrawableResource(R.color.background_material_light);
+        initListener();
         setToolBar();
         setCustomViewPager();
         setUpDrawer();
+    }
+
+    private void initListener() {
+        barnet = (ImageView) findViewById(R.id.bar_net);
+        barmusic = (ImageView) findViewById(R.id.bar_music);
+        barfriends = (ImageView) findViewById(R.id.bar_friends);
+        barnet.setOnClickListener(this);
+        barmusic.setOnClickListener(this);
+        barfriends.setOnClickListener(this);
     }
 
     /**
@@ -80,21 +95,22 @@ public class MainActivity extends BaseActivity {
      */
     private void setCustomViewPager() {
         //添加标签
-        tabs.add(barNet);
-        tabs.add(barMusic);
-        tabs.add(barFriends);
+        tabs.add(barnet);
+        tabs.add(barmusic);
+        tabs.add(barfriends);
         final AlbumFragmnet albumsFragment = new AlbumFragmnet();
-        final AlbumFragmnet musicsFragment = new AlbumFragmnet();
-        final AlbumFragmnet friendsFragment = new AlbumFragmnet();
+        final LocalFragment musicsFragment = new LocalFragment();
+        final FriendsFragment friendsFragment = new FriendsFragment();
 
-        final MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
+        MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
         mainPagerAdapter.addFragment(albumsFragment);
         mainPagerAdapter.addFragment(musicsFragment);
         mainPagerAdapter.addFragment(friendsFragment);
 
         mainViewpager.setAdapter(mainPagerAdapter);
-        mainViewpager.setCurrentItem(0);
-        barNet.setSelected(true);
+        mainViewpager.setOffscreenPageLimit(3);
+        mainViewpager.setCurrentItem(1);
+        barmusic.setSelected(true);
         mainViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -109,13 +125,6 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onPageScrollStateChanged(int state) {
 
-            }
-        });
-
-        barNet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainViewpager.setCurrentItem(0);
             }
         });
     }
@@ -157,9 +166,9 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.bar_net, R.id.bar_music, R.id.bar_friends, R.id.bar_search})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.bar_net:
                 mainViewpager.setCurrentItem(0);
                 break;
@@ -168,9 +177,6 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.bar_friends:
                 mainViewpager.setCurrentItem(2);
-                break;
-            case R.id.bar_search:
-//                startActivity(SearchActivity.class);
                 break;
         }
     }

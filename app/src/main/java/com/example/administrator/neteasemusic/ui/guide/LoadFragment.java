@@ -13,9 +13,8 @@ import com.example.administrator.neteasemusic.R;
 
 /**
  * create by bijingcun 2017.11.5
- *
+ * <p>
  * 实现Fragment 懒加载的父类
- *
  */
 public abstract class LoadFragment extends Fragment {
     /**
@@ -70,33 +69,37 @@ public abstract class LoadFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        isInitView=false;
-        canLoadDate=false;
+        isInitView = false;
+        canLoadDate = false;
     }
 
     /**
      * 获取子类的布局view
+     *
      * @return
      */
-    protected View getContentView(){
+    protected View getContentView() {
         return view;
     }
 
     /**
      * 根据子类的 布局id 获取到子view；
+     *
      * @param id
      * @param <T>
      * @return
      */
-    protected <T extends View> T getViewById(int id){
-        return (T)getContentView().findViewById(id);
+    protected <T extends View> T getViewById(int id) {
+        return (T) getContentView().findViewById(id);
     }
 
     /**
      * 停止加载数据
      */
-    protected void stopLoadDate(){
-    };
+    protected void stopLoadDate() {
+    }
+
+    ;
 
     /**
      * 子类懒加载数据

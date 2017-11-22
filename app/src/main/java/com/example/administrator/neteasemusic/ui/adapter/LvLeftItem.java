@@ -4,7 +4,6 @@ import android.text.TextUtils;
 
 /**
  * Created by bjc on 2017/11/7.
- *
  * 侧滑菜单 每一选项条目的对象；
  */
 

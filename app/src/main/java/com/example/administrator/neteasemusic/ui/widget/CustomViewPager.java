@@ -9,11 +9,13 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * Created by bjc on 2017/11/6.
+ * 作者：bjc on 2017/11/22 12:30
+ * 邮箱：783491064@qq.com
+ * QQ ：783491064
+ * 类描述：主页滑动冲突自定义VIEWPAGER
  */
-
 public class CustomViewPager extends ViewPager {
-    PointF mPointF=new PointF();
+    PointF mPointF = new PointF();
     private OnSingleTouchListener onSingleTouchListener;
 
     public CustomViewPager(Context context) {
@@ -26,21 +28,21 @@ public class CustomViewPager extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                mPointF.x=ev.getX();
-                mPointF.y=ev.getY();
-                if(this.getChildCount()>1){
+                mPointF.x = ev.getX();
+                mPointF.y = ev.getY();
+                if (this.getChildCount() > 1) {
                     getParent().requestDisallowInterceptTouchEvent(true);//请求父控件不要拦截；
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
-                if(this.getChildCount()>1){
+                if (this.getChildCount() > 1) {
                     getParent().requestDisallowInterceptTouchEvent(true);
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                if(PointF.length(ev.getX()-mPointF.x,ev.getY()-mPointF.y)<(float)5.0){
+                if (PointF.length(ev.getX() - mPointF.x, ev.getY() - mPointF.y) < (float) 5.0) {
                     //单纯的点击
                     onSingleTouch(this);
                 }
@@ -51,17 +53,17 @@ public class CustomViewPager extends ViewPager {
     }
 
     private void onSingleTouch(View view) {
-        if(onSingleTouchListener!=null){
+        if (onSingleTouchListener != null) {
             onSingleTouchListener.onSingleTouch();
         }
     }
 
-    interface OnSingleTouchListener{
+    interface OnSingleTouchListener {
         void onSingleTouch();
     }
 
-    public void setOnSingleTouchListener(OnSingleTouchListener onSingleTouchListener){
-        this.onSingleTouchListener=onSingleTouchListener;
+    public void setOnSingleTouchListener(OnSingleTouchListener onSingleTouchListener) {
+        this.onSingleTouchListener = onSingleTouchListener;
     }
 
 

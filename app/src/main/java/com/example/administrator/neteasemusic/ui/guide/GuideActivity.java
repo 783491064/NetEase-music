@@ -20,6 +20,12 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+/**
+ * 作者：bjc on 2017/11/22 12:30
+ * 邮箱：783491064@qq.com
+ * QQ ：783491064
+ * 类描述：引导页
+ */
 public class GuideActivity extends BaseActivity {
     @InjectView(R.id.viewpager)
     ViewPager viewpager;
@@ -45,7 +51,6 @@ public class GuideActivity extends BaseActivity {
     }
 
     /**
-<<<<<<< HEAD
      * 播放的三个界面；
      */
     private void initData() {
@@ -125,6 +130,7 @@ public class GuideActivity extends BaseActivity {
 
         }
     }
+
     /**
      * 点击进入主页面；
      */

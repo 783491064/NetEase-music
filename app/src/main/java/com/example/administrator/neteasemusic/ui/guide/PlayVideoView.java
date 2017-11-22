@@ -7,9 +7,11 @@ import android.util.AttributeSet;
 import android.widget.VideoView;
 
 /**
- * Created by bjc on 2017/11/7.
+ * 作者：bjc on 22017/11/7. 12:30
+ * 邮箱：783491064@qq.com
+ * QQ ：783491064
+ * 类描述：唱片片段ViewPager适配器；
  */
-
 public class PlayVideoView extends VideoView {
     public PlayVideoView(Context context) {
         super(context);
@@ -28,8 +30,9 @@ public class PlayVideoView extends VideoView {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.getSize(heightMeasureSpec));
     }
-    protected void palyVideo(Uri uri){
-        if(uri==null){
+
+    protected void palyVideo(Uri uri) {
+        if (uri == null) {
             throw new IllegalArgumentException("uri cannot be null");
         }
         setVideoURI(uri);

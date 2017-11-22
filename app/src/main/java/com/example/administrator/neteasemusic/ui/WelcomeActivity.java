@@ -16,7 +16,12 @@ import com.example.administrator.neteasemusic.ui.guide.GuideActivity;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-
+/**
+ * 作者：bjc on 2017/11/22 12:30
+ * 邮箱：783491064@qq.com
+ * QQ ：783491064
+ * 类描述：欢迎界面；
+ */
 public class WelcomeActivity extends BaseActivity {
     @InjectView(R.id.logo)
     ImageView logo;
