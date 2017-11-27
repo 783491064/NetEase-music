@@ -16,6 +16,8 @@ import com.example.administrator.neteasemusic.data.Album;
 import com.example.administrator.neteasemusic.data.Artist;
 import com.example.administrator.neteasemusic.data.Song;
 import com.example.administrator.neteasemusic.modle.LocalView;
+import com.example.administrator.neteasemusic.music.MusicPlaylist;
+import com.example.administrator.neteasemusic.service.MusicPlayerManager;
 import com.example.administrator.neteasemusic.ui.BaseFragment;
 import com.example.administrator.neteasemusic.ui.adapter.LocalRecyclerAdapter;
 import com.example.administrator.neteasemusic.ui.adapter.OnItemClickListener;
@@ -37,6 +39,7 @@ public class LocalMusicFragment extends BaseFragment implements LocalView.LocalM
     private RecyclerView recyclerView;
     private View view;
     private LocalRecyclerAdapter mRecyclerAdapter;
+    private MusicPlaylist musicPlayList;
 
     public LocalMusicFragment() {
     }
@@ -45,6 +48,7 @@ public class LocalMusicFragment extends BaseFragment implements LocalView.LocalM
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         localLibraryPresenter = new LocalLibraryPresenter(this,getActivity());
+        musicPlayList=new MusicPlaylist();
     }
 
     @Override
@@ -66,7 +70,9 @@ public class LocalMusicFragment extends BaseFragment implements LocalView.LocalM
         mRecyclerAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(Object item, int position) {
-
+                //点击条目开始播放音乐
+                MusicPlayerManager.get().playQueue(musicPlayList,position);
+                gotoSongPlayerActivity();
             }
 
             @Override
@@ -86,6 +92,8 @@ public class LocalMusicFragment extends BaseFragment implements LocalView.LocalM
 
     @Override
     public void getLocalMusicSuccess(List<Song> songs) {
+        musicPlayList.setQueue(songs);
+        musicPlayList.setTitle("本地歌曲");
         mRecyclerAdapter.setData(songs);
     }
 

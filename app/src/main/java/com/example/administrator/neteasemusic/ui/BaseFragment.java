@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
+import com.example.administrator.neteasemusic.ui.play.PlayingActivity;
 import com.example.administrator.neteasemusic.ui.presenter.LocalLibraryPresenter;
 
 import kr.co.namee.permissiongen.PermissionGen;
@@ -39,5 +40,9 @@ public class BaseFragment extends Fragment {
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
                                            int[] grantResults) {
         PermissionGen.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+    }
+    public boolean gotoSongPlayerActivity(){
+        PlayingActivity.open(getActivity());
+        return true;
     }
 }

@@ -38,6 +38,7 @@ public class Song implements Serializable{
     private int download;
     private String path;
     private boolean status;//歌曲状态
+    public String getPath;
 //    private boolean favor;//收藏
 
     public Song() {
@@ -81,7 +82,6 @@ public class Song implements Serializable{
         this.status = status;
 
     }
-
     public long getId() {
         return id;
     }

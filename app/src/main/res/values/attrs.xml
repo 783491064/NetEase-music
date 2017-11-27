@@ -11,6 +11,12 @@
     <!-- main theme color -->
     <attr name="themeColorSecondary" format="color" />
 
+    <!--夜间模式-->
+    <attr name="TextColor" format="reference"/>
+    <attr name="BackgroundColor" format="reference"/>
+    <attr name="LineColor" format="reference"/>
+    <attr name="ActionbarColor" format="reference"/>
+
     <declare-styleable name="TintDrawableHelper">
         <!-- support tint background color -->
         <attr name="backgroundTint" />
@@ -106,5 +112,30 @@
         <attr name="tabPaddingEnd" format="dimension" />
         <attr name="tabPaddingBottom" format="dimension" />
         <attr name="tabPadding" format="dimension" />
+    </declare-styleable>
+
+
+    <!-- 下拉选择器 -->
+    <declare-styleable name="DropDownMenu">
+        <attr name="ddunderlineColor" format="color" />
+        <attr name="dddividerColor" format="color" />
+        <attr name="ddtextSelectedColor" format="color" />
+        <attr name="ddtextUnselectedColor" format="color" />
+        <attr name="ddmenuBackgroundColor" format="color" />
+        <attr name="ddmaskColor" format="color" />
+        <attr name="ddmenuTextSize" format="dimension" />
+        <attr name="ddmenuSelectedIcon" format="reference" />
+        <attr name="ddmenuUnselectedIcon" format="reference" />
+    </declare-styleable>
+
+    <!--歌词控件属性-->
+    <declare-styleable name="LrcView">
+        <attr name="lrcTextSize" format="dimension" />
+        <attr name="lrcDividerHeight" format="dimension" />
+        <attr name="lrcNormalTextColor" format="reference|color" />
+        <attr name="lrcCurrentTextColor" format="reference|color" />
+        <attr name="lrcAnimationDuration" format="integer" />
+        <attr name="lrcLabel" format="string" />
+        <attr name="lrcPadding" format="dimension" />
     </declare-styleable>
 </resources>

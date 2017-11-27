@@ -7,6 +7,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.administrator.neteasemusic.R;
+import com.example.administrator.neteasemusic.service.MusicPlayerManager;
 
 import butterknife.ButterKnife;
 
@@ -24,6 +25,8 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //所有的界面保证为竖屏界面，不可变为横屏；
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //启动音乐播放的服务
+        MusicPlayerManager.startServiceIfNecessary(getApplicationContext());
 
     }
 
