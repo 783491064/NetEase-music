@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.PowerManager;
+import android.support.v4.media.session.PlaybackStateCompat;
 import android.util.Log;
 
 import com.example.administrator.neteasemusic.data.Song;
@@ -12,8 +13,10 @@ import com.example.administrator.neteasemusic.music.MusicPlaylist;
 import java.io.IOException;
 import java.util.IllegalFormatException;
 
+import static android.support.v4.media.session.PlaybackStateCompat.STATE_FAST_FORWARDING;
 import static android.support.v4.media.session.PlaybackStateCompat.STATE_PAUSED;
 import static android.support.v4.media.session.PlaybackStateCompat.STATE_PLAYING;
+import static android.support.v4.media.session.PlaybackStateCompat.STATE_REWINDING;
 
 /**
  * 作者：bjc on 2017/11/27 11:33
@@ -38,6 +41,8 @@ public class MusicPlayerManager implements MediaPlayer.OnPreparedListener, Media
     private int currentPlayType = CYCLETYPE;
     private MusicPlaylist musicPlaylist;
     private int currentMaxDuration;
+    private Song preSong;
+    private boolean state;
 
     /**
      * 单例实现；
@@ -208,5 +213,91 @@ public class MusicPlayerManager implements MediaPlayer.OnPreparedListener, Media
     @Override
     public void onSeekComplete(MediaPlayer mp) {
 
+    }
+
+    /**
+     * 获取当前播放歌曲；
+     */
+    public Song getPlayingSong() {
+        if(musicPlaylist!=null){
+            return musicPlaylist.getCurrentPlay();
+        }else{
+            return null;
+        }
+
+    }
+
+    /**
+     * 播放上一首歌曲；
+     */
+    public void playPre() {
+        currentProgress = 0;
+        play(musicPlaylist.getPreSong());
+    }
+
+    public int getState() {
+        if (service != null)
+            return service.getState();
+        return PlaybackStateCompat.STATE_STOPPED;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public int setState() {
+        if(service!=null){
+            return service.getState();
+        }
+        return PlaybackStateCompat.STATE_STOPPED;
+    }
+
+    /**
+     * 暂停
+     */
+    public void pause() {
+        if(service.getState()==STATE_PLAYING){
+            if(mediaPlayer!=null&&mediaPlayer.isPlaying()){
+                mediaPlayer.pause();
+                currentProgress=mediaPlayer.getCurrentPosition();
+            }
+        }
+        service.setState(STATE_PAUSED);
+    }
+
+    /**
+     * 直接播放；
+     */
+    public void play() {
+        if(musicPlaylist==null||musicPlaylist.getCurrentPlay()==null)return;
+        play(musicPlaylist.getCurrentPlay());
+    }
+
+    public void playNext() {
+        currentProgress = 0;
+        play(musicPlaylist.getNextSong());
+    }
+
+    public void seekTo(int progress) {
+        if(mediaPlayer==null){
+            currentProgress=progress;
+        }else{
+           if(getCurrentProgressInSong()>progress){
+               service.setState(STATE_REWINDING);
+           }else{
+               service.setState(STATE_FAST_FORWARDING);
+           }
+        }
+        currentProgress=progress;
+        mediaPlayer.seekTo(currentProgress);
+    }
+
+    /***
+     * 获取当前播放进度
+     *
+     * @return
+     */
+    public int getCurrentProgressInSong() {
+        return mediaPlayer != null ? mediaPlayer.getCurrentPosition() : currentProgress;
     }
 }

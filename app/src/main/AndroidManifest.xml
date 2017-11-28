@@ -32,7 +32,8 @@
         <activity
             android:name=".ui.cnmusic.LocalMusicActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.play.PlayingActivity"/>
+        <activity android:name=".ui.play.PlayingActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <!--播放音乐的服务-->
         <service android:name=".service.MusicService"
             android:enabled="true"
