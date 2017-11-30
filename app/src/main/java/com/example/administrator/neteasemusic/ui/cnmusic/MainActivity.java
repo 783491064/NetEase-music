@@ -69,6 +69,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setToolBar();
         setCustomViewPager();
         setUpDrawer();
+        showQuickControl(true);
     }
 
     private void initListener() {

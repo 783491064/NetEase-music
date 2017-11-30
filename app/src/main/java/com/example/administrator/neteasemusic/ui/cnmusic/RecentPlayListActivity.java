@@ -36,7 +36,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class RecentPlayListActivity extends AppCompatActivity implements OnSongChangedListener {
+public class RecentPlayListActivity extends BaseActivity implements OnSongChangedListener {
 
     @InjectView(R.id.btnRight)
     Button btnRight;
@@ -56,7 +56,7 @@ public class RecentPlayListActivity extends AppCompatActivity implements OnSongC
         setToolBar();
         MusicPlayerManager.get().registerListener(this);
         initRecyclerView();
-
+        showQuickControl(true);
     }
     //初始化ToolBar
     private void setToolBar() {

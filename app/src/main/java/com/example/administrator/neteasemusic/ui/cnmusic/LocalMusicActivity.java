@@ -41,6 +41,7 @@ public class LocalMusicActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local_music);
         ButterKnife.inject(this);
+        showQuickControl(true);
         setToobar();
         LocalMusicAdapter localMusicAdapter = new LocalMusicAdapter(getSupportFragmentManager());
         viewpager.setAdapter(localMusicAdapter);

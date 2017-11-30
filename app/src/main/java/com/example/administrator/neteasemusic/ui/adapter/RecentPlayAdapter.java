@@ -33,7 +33,7 @@ public class RecentPlayAdapter extends RecyclerView.Adapter<RecentPlayAdapter.Re
         return songClickListener;
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+    public void setOnItemClickListener(OnItemClickListener songClickListener) {
         this.songClickListener = songClickListener;
     }
 

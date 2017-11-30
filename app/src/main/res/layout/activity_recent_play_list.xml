@@ -34,4 +34,10 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    <FrameLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
 </RelativeLayout>

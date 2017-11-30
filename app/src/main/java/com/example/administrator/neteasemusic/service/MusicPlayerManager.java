@@ -343,4 +343,13 @@ public class MusicPlayerManager implements MediaPlayer.OnPreparedListener, Media
     public void setMusicPlaylist(MusicPlaylist musicPlaylist) {
         this.musicPlaylist = musicPlaylist;
     }
+    /**
+     * 通过下标播放音乐
+     *
+     * @param position
+     */
+    public void playQueueItem(int position) {
+        musicPlaylist.setCurrentPlay(position);
+        play(musicPlaylist.getCurrentPlay());
+    }
 }

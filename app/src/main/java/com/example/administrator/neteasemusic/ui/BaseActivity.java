@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.administrator.neteasemusic.R;
@@ -27,7 +28,6 @@ public class BaseActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //启动音乐播放的服务
         MusicPlayerManager.startServiceIfNecessary(getApplicationContext());
-
     }
 
     /**
@@ -37,5 +37,23 @@ public class BaseActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(this, activity);
         startActivity(intent);
+    }
+    private BottomFragment fragment; //底部播放控制栏
+    /**
+     * @param show 显示或关闭底部播放控制栏
+     */
+    public void showQuickControl(boolean show){
+        FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+        if(show){
+            if(fragment==null){
+                fragment=BottomFragment.newInstance();
+                ft.add(R.id.bottom_container,fragment).commitAllowingStateLoss();
+            }else{
+                ft.show(fragment).commitAllowingStateLoss();
+            }
+        }else{
+            if(fragment!=null)
+                ft.hide(fragment).commitAllowingStateLoss();
+        }
     }
 }

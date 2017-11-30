@@ -3,6 +3,7 @@ package com.example.administrator.neteasemusic.ui;
 import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
