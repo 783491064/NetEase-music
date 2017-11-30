@@ -12,13 +12,18 @@ import android.support.v4.media.session.MediaButtonReceiver;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 
+import com.example.administrator.neteasemusic.data.Song;
+import com.example.administrator.neteasemusic.music.MusicRecentPlaylist;
+
+import static android.media.session.PlaybackState.STATE_BUFFERING;
+
 /**
  * 作者：bjc on 2017/11/27 11:26
  * 邮箱：783491064@qq.com
  * QQ ：783491064
  * 类描述：
  */
-public class MusicService extends Service {
+public class MusicService extends Service implements OnSongChangedListener {
     public final Binder mBinder = new MyBinder();
     private MusicPlayerManager playerManager;
     private MediaSessionCompat mediaSession;
@@ -27,6 +32,17 @@ public class MusicService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         return mBinder;
+    }
+
+    @Override
+    public void onSongChanged(Song song) {
+        //将当前播放的歌曲添加到最近播放列表；
+        MusicRecentPlaylist.getInstance().addRecentSong(song);
+    }
+
+    @Override
+    public void onPlayBackStateChanged(PlaybackStateCompat state) {
+
     }
 
     public class MyBinder extends Binder {
@@ -47,6 +63,7 @@ public class MusicService extends Service {
      */
     public void setUp() {
         playerManager = MusicPlayerManager.from(this);
+        playerManager.registerListener(this);
         setupMddiaSession();
     }
 
@@ -120,7 +137,6 @@ public class MusicService extends Service {
 
         @Override
         public void onSeekTo(long pos) {
-            super.onSeekTo(pos);
         }
     }
     public int getState(){
@@ -137,6 +153,7 @@ public class MusicService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        playerManager.unregisterListener(this);
         mediaSession.release();
     }
 }

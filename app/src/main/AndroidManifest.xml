@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".MusicApplication"
@@ -32,10 +32,12 @@
         <activity
             android:name=".ui.cnmusic.LocalMusicActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.play.PlayingActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <!--播放音乐的服务-->
-        <service android:name=".service.MusicService"
+        <activity
+            android:name=".ui.play.PlayingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!-- 播放音乐的服务 -->
+        <service
+            android:name=".service.MusicService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -44,13 +46,16 @@
                 <action android:name="android.media.browse.MediaBrowserService" />
             </intent-filter>
         </service>
-         <!--结合MediaSession播放框架后，控制播放面板的接收者；-->
+        <!-- 结合MediaSession播放框架后，控制播放面板的接收者； -->
         <receiver android:name="android.support.v4.media.session.MediaButtonReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
                 <action android:name="android.media.AUDIO_BECOMING_NOISY" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".ui.cnmusic.RecentPlayListActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@ import android.app.Application;
  * 类描述：应用全局类
  */
 public class MusicApplication extends Application {
-    private static MusicApplication ourInstance = new MusicApplication();
+    private static MusicApplication ourInstance;
 
     public static MusicApplication getInstance() {
         return ourInstance;
@@ -18,5 +18,6 @@ public class MusicApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        ourInstance = this;
     }
 }

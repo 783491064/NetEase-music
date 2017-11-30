@@ -9,9 +9,10 @@ import android.util.Log;
 
 import com.example.administrator.neteasemusic.data.Song;
 import com.example.administrator.neteasemusic.music.MusicPlaylist;
+import com.example.administrator.neteasemusic.ui.play.PlayingActivity;
 
 import java.io.IOException;
-import java.util.IllegalFormatException;
+import java.util.ArrayList;
 
 import static android.support.v4.media.session.PlaybackStateCompat.STATE_FAST_FORWARDING;
 import static android.support.v4.media.session.PlaybackStateCompat.STATE_PAUSED;
@@ -43,6 +44,8 @@ public class MusicPlayerManager implements MediaPlayer.OnPreparedListener, Media
     private int currentMaxDuration;
     private Song preSong;
     private boolean state;
+    private ArrayList<OnSongChangedListener> changeListeners=new ArrayList<>();
+
 
     /**
      * 单例实现；
@@ -111,6 +114,9 @@ public class MusicPlayerManager implements MediaPlayer.OnPreparedListener, Media
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 mediaPlayer.setDataSource(song.getPath());
                 mediaPlayer.prepareAsync();
+                for(OnSongChangedListener l:changeListeners){
+                    l.onSongChanged(song);
+                }
             } catch (IOException e) {
                 Log.e(TAG, "PLAYING SONG:", e);
             }
@@ -299,5 +305,42 @@ public class MusicPlayerManager implements MediaPlayer.OnPreparedListener, Media
      */
     public int getCurrentProgressInSong() {
         return mediaPlayer != null ? mediaPlayer.getCurrentPosition() : currentProgress;
+    }
+    /***
+     * 获取当前播放歌曲长度
+     */
+    public int getCurrentMaxDuration() {
+        return currentMaxDuration;
+    }
+
+    public void setCurrentMaxDuration(int currentMaxDuration) {
+        this.currentMaxDuration = currentMaxDuration;
+    }
+
+    public int getCurrentPosition() {
+        if(mediaPlayer!=null){
+            return mediaPlayer.getCurrentPosition();
+        }
+        return 0;
+    }
+
+    public void registerListener(OnSongChangedListener l) {
+        changeListeners.add(l);
+    }
+
+    public void unregisterListener(OnSongChangedListener l) {
+        changeListeners.remove(l);
+    }
+    /***
+     * 获取播放列表
+     */
+    public MusicPlaylist getMusicPlaylist() {
+        return musicPlaylist;
+    }
+    /***
+     * 设置播放列表
+     */
+    public void setMusicPlaylist(MusicPlaylist musicPlaylist) {
+        this.musicPlaylist = musicPlaylist;
     }
 }
