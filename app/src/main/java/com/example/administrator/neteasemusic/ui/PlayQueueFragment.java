@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.media.session.PlaybackStateCompat;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -56,7 +57,7 @@ public class PlayQueueFragment extends DialogFragment implements OnSongChangedLi
         super.onCreate(savedInstanceState);
         //设置样式
         setStyle(DialogFragment.STYLE_NO_FRAME, R.style.CustomDatePickerDialog);
-        mContext =getActivity();
+        mContext =getContext();
     }
 
     @Nullable
@@ -82,6 +83,10 @@ public class PlayQueueFragment extends DialogFragment implements OnSongChangedLi
         playList.setLayoutManager(new LinearLayoutManager(mContext));
         playList.setHasFixedSize(true);
         playList.setAdapter(playListAdapter);
+        playList.setItemAnimator(new DefaultItemAnimator());
+        if(MusicPlayerManager.get().getMusicPlaylist()!=null){
+            playListAdapter.setSongs(MusicPlayerManager.get().getMusicPlaylist().getQueue());
+        }
         playListAdapter.setSongClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(Object item, int position) {
@@ -99,7 +104,9 @@ public class PlayQueueFragment extends DialogFragment implements OnSongChangedLi
 
     @Override
     public void onSongChanged(Song song) {
-
+        if(MusicPlayerManager.get().getMusicPlaylist()!=null){
+            playListAdapter.setSongs(MusicPlayerManager.get().getMusicPlaylist().getQueue());
+        }
     }
 
     @Override
@@ -141,5 +148,14 @@ public class PlayQueueFragment extends DialogFragment implements OnSongChangedLi
             }
         });
         materialDialogNormal.setTitle("清空列表");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //设置fragment的高度，宽度
+       int dialogHeight= (int)(mContext.getResources().getDisplayMetrics().heightPixels*0.6);
+        getDialog().getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,dialogHeight);
+        getDialog().setCanceledOnTouchOutside(true);
     }
 }
