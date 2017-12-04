@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.administrator.neteasemusic.db.dao.CollectionDao;
+import com.example.administrator.neteasemusic.db.dao.CollectionShipDao;
 import com.example.administrator.neteasemusic.db.dao.SongDao;
 
 /**
@@ -36,8 +37,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(SongDao.createIndex());
         //收藏夹表
         db.execSQL(CollectionDao.createTable());
-
         //收藏夹关联表
+        db.execSQL(CollectionShipDao.createTable());
+
     }
 
     /**

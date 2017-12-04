@@ -33,7 +33,7 @@ import kr.co.namee.permissiongen.PermissionGen;
  * QQ ：783491064
  * 类描述：单曲片段
  */
-public class LocalMusicFragment extends BaseFragment implements LocalView.LocalMusic{
+public class LocalMusicFragment extends BaseFragment implements LocalView.LocalMusic {
 
     private LocalLibraryPresenter localLibraryPresenter;
     private RecyclerView recyclerView;
@@ -47,8 +47,8 @@ public class LocalMusicFragment extends BaseFragment implements LocalView.LocalM
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        localLibraryPresenter = new LocalLibraryPresenter(this,getActivity());
-        musicPlayList=new MusicPlaylist();
+        localLibraryPresenter = new LocalLibraryPresenter(this, getActivity());
+        musicPlayList = new MusicPlaylist();
     }
 
     @Override
@@ -63,7 +63,7 @@ public class LocalMusicFragment extends BaseFragment implements LocalView.LocalM
      * 初始化recyclerView
      */
     private void initRecyclerView() {
-        recyclerView = (RecyclerView)view.findViewById(R.id.rcv);
+        recyclerView = (RecyclerView) view.findViewById(R.id.rcv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerAdapter = new LocalRecyclerAdapter(getActivity());
         recyclerView.setAdapter(mRecyclerAdapter);
@@ -71,7 +71,7 @@ public class LocalMusicFragment extends BaseFragment implements LocalView.LocalM
             @Override
             public void onItemClick(Object item, int position) {
                 //点击条目开始播放音乐
-                MusicPlayerManager.get().playQueue(musicPlayList,position);
+                MusicPlayerManager.get().playQueue(musicPlayList, position);
                 gotoSongPlayerActivity();
             }
 

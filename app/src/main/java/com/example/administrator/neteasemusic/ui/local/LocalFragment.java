@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.example.administrator.neteasemusic.R;
 import com.example.administrator.neteasemusic.ui.cnmusic.LocalMusicActivity;
 import com.example.administrator.neteasemusic.ui.cnmusic.RecentPlayListActivity;
+import com.example.administrator.neteasemusic.ui.colllection.CollectionCreateActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -58,6 +59,7 @@ public class LocalFragment extends Fragment {
             case R.id.artist_layout://点击我的歌手
                 break;
             case R.id.add:
+                CollectionCreateActivity.open(getActivity());
                 break;
         }
     }

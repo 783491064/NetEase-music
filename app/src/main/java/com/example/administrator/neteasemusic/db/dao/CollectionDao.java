@@ -12,8 +12,8 @@ import java.util.List;
  * 作者：bjc on 2017/12/1 16:36
  * 邮箱：783491064@qq.com
  * QQ ：783491064
- * 类描述：
- */
+ * 类描述：收藏夹数据表
+ * */
 public class CollectionDao extends BaseDao {
 
     private static final String TABLE = "COLLECTION";

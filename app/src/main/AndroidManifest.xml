@@ -54,8 +54,12 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.cnmusic.RecentPlayListActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ui.cnmusic.RecentPlayListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.colllection.CollectionCreateActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
