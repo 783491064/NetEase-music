@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,12 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.administrator.neteasemusic.R;
 import com.example.administrator.neteasemusic.data.CollectionBean;
+import com.example.administrator.neteasemusic.db.dao.CollectionManager;
+import com.example.administrator.neteasemusic.modle.event.CollectionUpdateEvent;
 import com.example.administrator.neteasemusic.utils.PhotoUtils;
+import com.example.administrator.neteasemusic.utils.RxBus;
+
+import java.io.File;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -70,9 +76,10 @@ public class CollectionCreateActivity extends AppCompatActivity {
 
     private void initData() {
         hasChange = false;
-        if (cid != -1) {//之前已经有的收藏夹
-
-        } else {//新建收藏夹
+        if (cid != -1) {
+            //TODO 之前已经有的收藏夹
+        } else {
+            //新建收藏夹
             collectionBean = new CollectionBean(-1, getString(R.string.collection_title_default), "", 0, "");
         }
         collectionDes.addTextChangedListener(new TextWatcher() {
@@ -145,6 +152,14 @@ public class CollectionCreateActivity extends AppCompatActivity {
                     photoUtils.cropImageUri(photoUtils.getUri(), 200, 200, false, PhotoUtils.CROP_PICTURE);
                 break;
             case PhotoUtils.CHOOSE_PICTURE:
+                //从相册中选择照片的回调；
+                if(requestCode==RESULT_OK){
+                    if(data!=null){
+                        Uri uri = data.getData();
+//                        Uri uri1 = Uri.fromFile(new File(PhotoUtils.getPath(this, uri)));
+                    }
+                }
+
                 break;
             case PhotoUtils.CROP_PICTURE:
                 //拍照切图的回调：
@@ -181,7 +196,7 @@ public class CollectionCreateActivity extends AppCompatActivity {
         }
         //保存的操作；
         if(item.getItemId()==R.id.action_store){
-//            CollectionManager.getInstance().setCollection(collectionBean);
+            CollectionManager.getInstance().setCollection(collectionBean);
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -198,11 +213,16 @@ public class CollectionCreateActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                       //添加收藏夹到数据库；
+                        CollectionManager.getInstance().setCollection(collectionBean);
+                        //通知刷新数据；
+                        RxBus.getInstance().post(new CollectionUpdateEvent(true));
+                        dialog.dismiss();
+                        finish();
 
                     }
                 })
                 .onNegative(new MaterialDialog.SingleButtonCallback(){
-
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                         dialog.dismiss();

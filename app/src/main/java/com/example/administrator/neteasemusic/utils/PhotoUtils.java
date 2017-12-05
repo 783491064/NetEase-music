@@ -87,7 +87,11 @@ public class PhotoUtils {
      * 直接在图片库中选取已有照片
      */
     public void picPhoto() {
-
+        final Intent intent=new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        activity.startActivityForResult(intent,CHOOSE_PICTURE);
     }
 
     /**
@@ -135,4 +139,9 @@ public class PhotoUtils {
         }
         return bitmap;
     }
+
+//    public static String getPath(CollectionCreateActivity collectionCreateActivity, Uri uri) {
+//
+//
+//    }
 }

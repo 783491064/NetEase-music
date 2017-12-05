@@ -58,7 +58,7 @@ public class LocalFragment extends Fragment {
                 break;
             case R.id.artist_layout://点击我的歌手
                 break;
-            case R.id.add:
+            case R.id.add://创建收藏夹；
                 CollectionCreateActivity.open(getActivity());
                 break;
         }
